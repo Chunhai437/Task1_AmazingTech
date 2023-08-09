@@ -7,21 +7,19 @@ import {
   FieldTimeOutlined,
   FileOutlined,
   BarChartOutlined,
-
   SnippetsOutlined,
   UsergroupAddOutlined,
-
   DollarOutlined,
   UserAddOutlined,
   SolutionOutlined,
   FileDoneOutlined,
 } from '@ant-design/icons';
-import { Divider, Menu, Switch } from 'antd';
+import { Menu, Switch } from 'antd';
 import './index.css';
 import Dashboard from './layouts/Dashboard';
 import Index from './layouts/Index';
 import { Link } from 'react-router-dom';
-import Department from './layouts/Department';
+import Departments from './layouts/Departments';
 import AllStaff from './layouts/AllStaff';
 // import Header from './components/Header';
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -35,20 +33,20 @@ function getItem(label, key, icon, children) {
   };
 }
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 const items = [
   getItem(
-    <Link to="/dashboard" >Dashboard</Link>,
+    <Link to="/dashboard" >DASHBOARD</Link>,
     'Dashboard',
     <HomeOutlined />
   ),
 
   getItem('NHÂN VIÊN', 'sub1', <TeamOutlined />, [
-    getItem(<Link to="/allstaff" >Phòng Ban</Link>
+    getItem(<Link to="/departments" >Phòng Ban</Link>
     ,'Phòng Ban', 
     <TeamOutlined />),
     getItem('Phòng Ban Của Tôi', '3', <TeamOutlined />),
-    getItem(<Link to="/department" >Toàn Bộ Nhân Viên</Link>,
+    getItem(<Link to="/allstaff" >Toàn Bộ Nhân Viên</Link>,
       'Toàn Bộ Nhân Viên',
       <TeamOutlined />),
     getItem('Tạo Nhân Viên Mới', '5', <UserAddOutlined />),
@@ -113,19 +111,20 @@ const App = () => {
         <div className="demo-logo-vertical" />
         <Space size={16} wrap>
         <Avatar src={<img src={url} alt="avatar" />} />
-        <h3>Nguyen Van Quan Ly</h3>
+        <h3>NGUYEN VAN QUAN LY</h3>
     </Space>
 
         <br />
         <br />
 
         <div className="demo-logo-vertical" />
-        <Switch onChange={changeMode} /><h4 style={{display: 'inline'}}>Change Mode</h4>
-        <Divider type="horizontal" />
-        <Switch onChange={changeTheme} /><h4 style={{display: 'inline'}}>Change Style</h4>
+        <Space size={2}>
+        <Switch onChange={changeMode} /><h5> CHANGE MODE</h5></Space>
+        <br/>
+        <Space size={2}>
+        <Switch onChange={changeTheme} /><h5> CHANGE STYLE</h5>
+        </Space>
         <br />
-        <br />
-
         <Menu
           style={{
             width: '260',
@@ -161,7 +160,7 @@ const App = () => {
             <Routes>
               <Route path='' element={<Index />} />
               <Route path='/dashboard' element={<Dashboard />} />
-              <Route path='/department' element={<Department />} />
+              <Route path='/departments' element={<Departments />} />
               <Route path='/allstaff' element={<AllStaff/>} />
             </Routes>
           </div>
