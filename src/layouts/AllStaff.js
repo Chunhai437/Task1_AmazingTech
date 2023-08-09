@@ -288,7 +288,8 @@ export default function AllStaff() {
                 }}
               >
     
-    <Table columns={columns} dataSource={data} />;
+    <Table
+     columns={columns} dataSource={data} scroll={{x:'max-content'}}/>;
 
               </div>
             </Content>

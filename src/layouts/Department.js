@@ -185,6 +185,7 @@ const data = [
     email: 'test1@gmail.com',
     bank: 'TPbank',
     birthday: '3 tháng 1 năm 2003',
+    address: '123 Cống Quỳnh, Quận 1, TP Hồ Chí Minh',
     nation: 'VietNam',
     account: '939843894949'
   },
@@ -199,6 +200,7 @@ const data = [
     email: 'staff@test.com',
     bank: 'Vietcombank',
     birthday: '9 tháng 2 năm 1999',
+    address: '64A1 Ấp Bắc, Phường 4, TP Mỹ Tho, Tiền Giang',
     nation: 'America',
     account: '395938592003034'
   },
@@ -213,6 +215,7 @@ const data = [
     email: 'hrstaff@gmail.com',
     bank: 'ACBbank',
     birthday: '25 tháng 4 năm 1998',
+    address: 'Vinhomes Grandpark, Quận 9, TP Hồ Chí Minh',
     nation: 'VietNam',
     account: '737498399474939'
   },
@@ -227,6 +230,7 @@ const data = [
     email: 'hrmanager@gmail.com',
     bank: 'TPbank',
     birthday: '8 tháng 9 năm 1990',
+    address: 'VinWonders, TP Đà Nẵng',
     nation: 'VietNam',
     account: '7839940940930'
   },
@@ -337,7 +341,8 @@ export default function Department() {
                   background: colorBgContainer,
                 }}
               >
-                <Table style={{overflow: 'auto'}}columns={columns} dataSource={data} />;
+                <Table
+     columns={columns} dataSource={data} scroll={{x:'max-content'}}/>;
               </div>
             </Content>
           </Layout>
