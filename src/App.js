@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom'
 import { Avatar,Layout, theme, Space } from 'antd';
 import {
@@ -36,50 +36,49 @@ function getItem(label, key, icon, children) {
 const { Content, Footer, Sider } = Layout;
 const items = [
   getItem(
-    <Link to="/dashboard" >DASHBOARD</Link>,
+    <Link to="/dashboard" ><span style={{fontWeight: '600'}}>DASHBOARD</span></Link>,
     'Dashboard',
     <HomeOutlined />
   ),
 
-  getItem('NHÂN VIÊN', 'sub1', <TeamOutlined />, [
+  getItem(<span style={{fontWeight: '600'}}>NHÂN VIÊN</span>, 'sub1', <TeamOutlined />, [
     getItem(<Link to="/departments" >Phòng Ban</Link>
-    ,'Phòng Ban', 
+    ,'1', 
     <TeamOutlined />),
-    getItem('Phòng Ban Của Tôi', '3', <TeamOutlined />),
+    getItem('Phòng Ban Của Tôi', '2', <TeamOutlined />),
     getItem(<Link to="/allstaff" >Toàn Bộ Nhân Viên</Link>,
-      'Toàn Bộ Nhân Viên',
+      '3',
       <TeamOutlined />),
-    getItem('Tạo Nhân Viên Mới', '5', <UserAddOutlined />),
+    getItem('Tạo Nhân Viên Mới', '4', <UserAddOutlined />),
   ]),
-  getItem('TĂNG CA', 'sub2', <FieldTimeOutlined />, [
-    getItem('Đơn Tăng Ca Nhân Viên', '6', <SolutionOutlined />),
-    getItem('Đơn Tăng Ca Của Tôi', '7', <SolutionOutlined />),
+  getItem(<span style={{fontWeight: '600'}}>TĂNG CA</span>, 'sub2', <FieldTimeOutlined />, [
+    getItem('Đơn Tăng Ca Nhân Viên', '5', <SolutionOutlined />),
+    getItem('Đơn Tăng Ca Của Tôi', '6', <SolutionOutlined />),
   ]),
-  getItem('NGHỈ PHÉP', 'sub3', <FieldTimeOutlined />, [
-    getItem('Đơn Nghỉ Phép Của Nhân Viên', '8', <SolutionOutlined />),
-    getItem('Đơn Nghỉ Phép Của Tôi', '9', <SolutionOutlined />),
+  getItem(<span style={{fontWeight: '600'}}>NGHỈ PHÉP</span>, 'sub3', <FieldTimeOutlined />, [
+    getItem('Đơn Nghỉ Phép Của Nhân Viên', '7', <SolutionOutlined />),
+    getItem('Đơn Nghỉ Phép Của Tôi', '8', <SolutionOutlined />),
   ]),
-  getItem('ĐƠN KHÁC', 'sub4', <FileOutlined />, [
-    getItem('Danh Sách Đơn Khác', '10', <FileOutlined />),
-    getItem('Đơn Khác Của Tôi', '11', <FileOutlined />),
-  ]),
-
-  getItem('QUẢN LÝ LƯƠNG', 'sub5', <BarChartOutlined />, [
-    getItem('Lương Nhân Viên', '12', <DollarOutlined />),
-    getItem('Lương Của Tôi', '13', <DollarOutlined />),
+  getItem(<span style={{fontWeight: '600'}}>ĐƠN KHÁC</span>, 'sub4', <FileOutlined />, [
+    getItem('Danh Sách Đơn Khác', '9', <FileOutlined />),
+    getItem('Đơn Khác Của Tôi', '10', <FileOutlined />),
   ]),
 
-  getItem('HỢP ĐỒNG', 'sub6', <SnippetsOutlined />, [
-    getItem('Hợp Đồng Nhân Viên', '14', <FileDoneOutlined />),
-    getItem('Hợp Đồng Của Tôi', '15', <FileDoneOutlined />),
+  getItem(<span style={{fontWeight: '600'}}>QUẢN LÝ LƯƠNG</span>, 'sub5', <BarChartOutlined />, [
+    getItem('Lương Nhân Viên', '11', <DollarOutlined />),
+    getItem('Lương Của Tôi', '12', <DollarOutlined />),
   ]),
 
-  getItem('TUYỂN DỤNG', 'sub7', <UsergroupAddOutlined />, [
-    getItem('Danh Sách Ứng Viên', '16', <UsergroupAddOutlined />),
+  getItem(<span style={{fontWeight: '600'}}>HỢP ĐỒNG</span>, 'sub6', <SnippetsOutlined />, [
+    getItem('Hợp Đồng Nhân Viên', '13', <FileDoneOutlined />),
+    getItem('Hợp Đồng Của Tôi', '14', <FileDoneOutlined />),
+  ]),
+
+  getItem(<span style={{fontWeight: '600'}}>TUYỂN DỤNG</span>, 'sub7', <UsergroupAddOutlined />, [
+    getItem('Danh Sách Ứng Viên', '15', <UsergroupAddOutlined />),
 
   ]),
 ]
-
 const App = () => {
   const {
     token: { colorBgContainer },
@@ -92,14 +91,26 @@ const App = () => {
   const changeTheme = (value) => {
     setTheme1(value ? 'dark' : 'light');
   };
-
+  const [selectedKeys, setSelectedKeys] = useState([]);
+  useEffect(() => {
+    const selectedMenu = localStorage.getItem('selectedMenu');
+    if (selectedMenu) {
+    setSelectedKeys([selectedMenu]);
+    }
+    }, []
+    );
+    const handleMenuSelect = (item) => {
+      setSelectedKeys([item.key]);
+      localStorage.setItem('selectedMenu', item.key);
+      };
   return (
     <Layout hasSider>
 
-      <Sider theme={theme1}
+      <Sider 
+      theme={theme1}
         width="260"
         style={{
-          // overflow: 'auto',
+          overflow: 'auto',
           height: '100vh',
           position: 'fixed',
           // left: 0,
@@ -119,22 +130,29 @@ const App = () => {
 
         <div className="demo-logo-vertical" />
         <Space size={2}>
-        <Switch onChange={changeMode} /><h5> CHANGE MODE</h5></Space>
+        <Switch style={{margin: '0px 0px 0px 10px'}} onChange={changeMode} /><span style={{fontWeight: '500'}}>CHANGE MODE</span></Space>
+        <br/>
         <br/>
         <Space size={2}>
-        <Switch onChange={changeTheme} /><h5> CHANGE STYLE</h5>
+        <Switch style={{margin: '0px 0px 0px 10px'}} onChange={changeTheme} /><span style={{fontWeight: '500'}}>CHANGE STYLE</span>
         </Space>
         <br />
+        <br/>
         <Menu
           style={{
             width: '260',
           }}
-          theme={theme1} mode={mode} defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']}
+          theme={theme1} mode={mode} 
+          selectedKeys={selectedKeys}
+          onSelect={handleMenuSelect}
+          // defaultSelectedKeys={['1']} 
+          // defaultOpenKeys={['sub1']}
+          defaultOpenKeys={['sub1', 'sub2', 'sub3', 'sub4', 'sub5','sub6', 'sub7']}
           items={items}
         >
         </Menu>
       </Sider>
-      <Layout
+      <Layout theme={theme1}
         className="site-layout"
         style={{
           // marginLeft: 200,

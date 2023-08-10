@@ -44,13 +44,14 @@ const columns = [
     }
   },
   {
-    title: 'ID',
+    title: <span style={{color: 'grey'}}><b>ID</b></span>,
     dataIndex: 'key',
     key: 'key',
+    render: (text) => <span style={{ color: 'gray' }}>{text}</span>,
   },
   
   {
-    title: [<AlignLeftOutlined />, ' Tên Nhân Viên'],
+    title: [<AlignLeftOutlined style={{color: 'grey'}} />, <span style={{color: 'grey'}}><b>  Tên Nhân Viên</b></span>],
     dataIndex: 'name',
     key: 'name',
     overflow:'auto',
@@ -73,7 +74,7 @@ const randomColor = colors[Math.floor(Math.random() * colors.length)];
             >
               {letter}
             </Avatar>
-            <>   {text}</>
+            <span style={{color: 'grey'}}>   {text}</span>   
           </>
         );
       }
@@ -81,7 +82,7 @@ const randomColor = colors[Math.floor(Math.random() * colors.length)];
     },
   },
   {
-    title: [<UnorderedListOutlined/>, ' Phòng Ban'],
+    title: [<UnorderedListOutlined style={{color: 'grey'}}/>, <span style={{color: 'grey'}}><b>  Tên Phòng Ban</b></span>],
     dataIndex: 'room',
     key: 'room',
     render: (text) => {
@@ -122,17 +123,18 @@ const randomColor = colors[Math.floor(Math.random() * colors.length)];
       }
   
       return (
-        <Badge color={color} text={<u>{text}</u>} />
+        <Badge color={color} text={<span style={{color:'grey'}}><u>{text}</u></span>} />
       );
     },
   },
   {
-    title: [<PhoneOutlined />,' Số Điện Thoại'],
+    title: [<PhoneOutlined style={{color: 'grey'}}/>,<span style={{color: 'grey'}}><b>  Số Điện Thoại</b></span>],
     dataIndex: 'phone',
     key: 'phone',
+    render: (text) => <span style={{ color: 'gray' }}>{text}</span>,
   },
   {
-    title: [<UnorderedListOutlined/>, ' Giới tính'],
+    title: [<UnorderedListOutlined style={{color: 'grey'}}/>, <span style={{color: 'grey'}}><b>  Giới tính</b></span>],
     key: 'sex',
     dataIndex: 'sex',
     render: (text) => {
@@ -147,34 +149,40 @@ const randomColor = colors[Math.floor(Math.random() * colors.length)];
     }
   },
   {
-    title: [<GoogleOutlined/>, ' Email'],
+    title: [<GoogleOutlined style={{color: 'grey'}}/>, <span style={{color: 'grey'}}><b>  Email</b></span>],
     dataIndex: 'email',
     key: 'email',
+    render: (text) => <span style={{ color: 'gray' }}>{text}</span>,
   },
   {
-    title:  [<BankOutlined/> , ' Ngân Hàng'],
+    title:  [<BankOutlined style={{color: 'grey'}}/> , <span style={{color: 'grey'}}><b>  Ngân Hàng</b></span>],
     dataIndex: 'bank',
     key: 'bank',
+    render: (text) => <span style={{ color: 'gray' }}>{text}</span>,
   },
   {
-    title: [<CalendarOutlined />, ' Ngày Sinh'],
+    title: [<CalendarOutlined style={{color: 'grey'}} />, <span style={{color: 'grey'}}><b>  Ngày Sinh</b></span>],
     dataIndex: 'birthday',
     key: 'birthday',
+    render: (text) => <span style={{ color: 'gray' }}>{text}</span>,
   },
   {
-    title: [<HomeOutlined /> , ' Địa Chỉ'],
+    title: [<HomeOutlined style={{color: 'grey'}} /> , <span style={{color: 'grey'}}><b>  Địa Chỉ</b></span>],
     dataIndex: 'address',
     key: 'address',
+    render: (text) => <span style={{ color: 'gray' }}>{text}</span>,
   },
   {
-    title: [<GlobalOutlined />, ' Quốc Gia'],
+    title: [<GlobalOutlined style={{color: 'grey'}}/>, <span style={{color: 'grey'}}><b>  Quốc Gia</b></span>],
     dataIndex: 'nation',
     key: 'nation',
+    render: (text) => <span style={{ color: 'gray' }}>{text}</span>,
   },
   {
-    title: [<CreditCardOutlined />, ' TK Ngân Hàng'],
+    title: [<CreditCardOutlined style={{color: 'grey'}}/>, <span style={{color: 'grey'}}><b>  TK Ngân Hàng</b></span>],
     dataIndex: 'account',
     key: 'account',
+    render: (text) => <span style={{ color: 'grey' }}>{text}</span>,
   },
 ];
 const data = [
@@ -262,10 +270,11 @@ export default function AllStaff() {
             marginLeft:'16px',
             padding: 0,
             background: colorBgContainer,
+            fontWeight: '650'
           }}
 
         >
-          <h3 style={{display: 'inline', float: 'left', textAlign: 'center', margin:'0px 0px 0px 10px'}}>DANH SÁCH NHÂN VIÊN</h3>
+          <div style={{ float: 'left', textAlign: 'center', margin:'0px 0px 0px 10px'}}>DANH SÁCH NHÂN VIÊN</div>
             <UploadOutlined
               rotate={90}
               style={{
@@ -284,7 +293,10 @@ export default function AllStaff() {
             <Header
           style={{
             background: colorBgContainer,
-            margin:'16px 14px 10px 16px',
+            margin:'40px 14px 10px 16px',
+            border: '1px solid',
+            borderColor: '#dddddd',
+            borderRadius: '10px',
           }}
         >
           <div
@@ -337,7 +349,6 @@ export default function AllStaff() {
           <Option value="Design">Design</Option>
           <Option value="Chăm sóc khách hàng">Phòng Chăm Sóc Khách Hàng</Option>
         </Select>
-
               <Button
                 style={{
                   borderColor: '#7CFC00',
@@ -361,21 +372,32 @@ export default function AllStaff() {
            
 
         </Header>
-            <Content 
+        <Content
               style={{
-                margin: '24px 16px 0',
+                margin: '10px 16px 50px',
                 overflow: 'initial',
+                background: colorBgContainer,
+                border: '1px solid',
+                borderColor: '#dddddd',
+                borderRadius: '10px',
               }}
             >
               <div
                 style={{
-                  padding: 24,
+                  // padding: 24,
                   textAlign: 'center',
                   background: colorBgContainer,
+                  display:'inline',
                 }}
               >
-                <Table
+    <Table
+    style={{
+      border: '1px solid',
+      borderColor: '#dddddd',
+      borderRadius: '10px',
+              }}
      columns={columns} dataSource={data} scroll={{x:'max-content'}}/>
+
               </div>
             </Content>
           </Layout>

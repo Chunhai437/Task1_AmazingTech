@@ -6,9 +6,10 @@ import {
   AlignLeftOutlined, 
   PhoneOutlined,
   PlusCircleOutlined,
-  UploadOutlined
+  UploadOutlined,
+  ArrowUpOutlined
 } from '@ant-design/icons';
-import { Layout, Button, theme, Divider, Avatar, Table, Badge } from 'antd';
+import { Layout, Button, theme, Avatar, Table, Badge } from 'antd';
 const { Content, Header} = Layout;
 
 
@@ -18,12 +19,13 @@ const columns = [
     key: 'symbol',
   },
   {
-    title: 'ID',
+    title: <span style={{color: 'grey'}}>ID</span>,
     dataIndex: 'key',
     key: 'key',
+    render: (text) => <span style={{ color: 'grey' }}>{text}</span>,
   },
   {
-    title: [<UserOutlined />, ' Tên Phòng Ban'],
+    title: [<UserOutlined style={{color: 'grey'}} />, <span style={{color: 'grey'}}><b>  Tên Phòng Ban</b></span>],
     dataIndex: 'room',
     key: 'room',
     render: (text) => {
@@ -64,12 +66,12 @@ const columns = [
       }
   
       return (
-        <Badge color={color} text={<u>{text}</u>} />
+        <Badge color={color} text={<span style={{color: 'grey'}}><u>{text}</u></span>} />
       );
     },
   },
   {
-    title: [<UserOutlined />, ' Quản Lý'],
+    title: [<UserOutlined style={{color: 'grey'}}/>, <span style={{color: 'grey'}}><b>  Quản Lý  </b></span>, <ArrowUpOutlined style={{color: 'grey'}} />],
     dataIndex: 'name',
     key: 'name',
     render: (text) => {
@@ -85,27 +87,29 @@ const columns = [
             >
               {letter}
             </Avatar>
-            <>   {text}</>
+             <span style={{color: 'grey'}}>   {text}</span>
           </>
         );
       }
-      return text;
     },
   },
   {
-    title: [<NumberOutlined />,' Số Nhân Viên'],
+    title: [<NumberOutlined style={{color: 'grey'}} />,<span style={{color: 'grey'}}><b>  Số Nhân Viên</b></span>],
     dataIndex: 'number',
     key: 'number',
+    render: (text) => <span style={{ color: 'grey' }}>{text}</span>,
   },
   {
-    title: [<AlignLeftOutlined />,' Email Quản Lý'],
+    title: [<AlignLeftOutlined style={{color: 'grey'}} />,<span style={{color: 'grey'}}><b>  Email Quản Lý</b></span>],
     dataIndex: 'email',
     key: 'email',
+    render: (text) => <span style={{ color: 'grey' }}>{text}</span>,
   },
   {
-    title: [<PhoneOutlined />,' Số Điện Thoại'],
+    title: [<PhoneOutlined style={{color: 'grey'}}/>,<span style={{color: 'grey'}}><b>  Số Điện Thoại</b></span>],
     dataIndex: 'phone',
     key: 'phone',
+    render: (text) => <span style={{ color: 'grey' }}>{text}</span>,
   },
 ];
 const data = [
@@ -114,7 +118,7 @@ const data = [
     symbol: <EllipsisOutlined />,
     room: 'Sales',
     name: 'Nguyen Van Quan Ly',
-    number: '3',
+    number: 3,
     email: 'hrstaff@test.com',
     phone: '0936748956'
   },
@@ -123,7 +127,7 @@ const data = [
     symbol: <EllipsisOutlined />,
     room: 'Marketing',
     name: '',
-    number: '0',
+    number: 0,
     email: '',
     phone: ''
   },
@@ -132,7 +136,7 @@ const data = [
     symbol: <EllipsisOutlined />,
     room: 'Finance',
     name: '',
-    number: '0',
+    number: 0,
     email: '',
     phone: ''
   },
@@ -141,7 +145,7 @@ const data = [
     symbol: <EllipsisOutlined />,
     room: 'Human Resource',
     name: '',
-    number: '0',
+    number: 0,
     email: '',
     phone: ''
   },
@@ -150,7 +154,7 @@ const data = [
     symbol: <EllipsisOutlined />,
     room: 'Operations',
     name: '',
-    number: '0',
+    number: 0,
     email: '',
     phone: ''
   },
@@ -159,7 +163,7 @@ const data = [
     symbol: <EllipsisOutlined />,
     room: 'Engineering',
     name: '',
-    number: '0',
+    number: 0,
     email: '',
     phone: ''
   },
@@ -168,7 +172,7 @@ const data = [
     symbol: <EllipsisOutlined />,
     room: 'Customer Support',
     name: '',
-    number: '0',
+    number: 0,
     email: '',
     phone: ''
   },
@@ -177,7 +181,7 @@ const data = [
     symbol: <EllipsisOutlined />,
     room: 'Research & Development',
     name: '',
-    number: '0',
+    number: 0,
     email: '',
     phone: ''
   },
@@ -186,7 +190,7 @@ const data = [
     symbol: <EllipsisOutlined />,
     room: 'Quality Assurance',
     name: '',
-    number: '0',
+    number: 0,
     email: '',
     phone: ''
   },
@@ -195,7 +199,7 @@ const data = [
     symbol: <EllipsisOutlined />,
     room: 'Design',
     name: '',
-    number: '0',
+    number: 0,
     email: '',
     phone: ''
   },
@@ -204,7 +208,7 @@ const data = [
     symbol: <EllipsisOutlined />,
     room: 'Chăm sóc khách hàng',
     name: '',
-    number: '1',
+    number: 1,
     email: '',
     phone: ''
   },
@@ -231,10 +235,11 @@ export default function Departments() {
             marginLeft:'16px',
             padding: 0,
             background: colorBgContainer,
+            fontWeight: '650'
           }}
 
         >
-          <h3 style={{display: 'inline', float: 'left', textAlign: 'center', margin:'0px 0px 0px 10px'}}>DANH SÁCH PHÒNG BAN</h3>
+          <div style={{float: 'left', textAlign: 'center', margin:'0px 0px 0px 10px'}}>DANH SÁCH PHÒNG BAN</div>
             <UploadOutlined
               rotate={90}
               style={{
@@ -248,7 +253,6 @@ export default function Departments() {
                 borderRadius: '10px',
               }}
             />
-            <Divider type="horizontal" style={{color: '#dddddd'}}/>
         </Header>
         
         <Header
@@ -256,7 +260,10 @@ export default function Departments() {
             marginLeft:'16px',
             padding: 0,
             background: colorBgContainer,
-            marginTop: '30px'
+            marginTop: '40px',
+            border: '1px solid',
+            borderColor: '#dddddd',
+            borderRadius: '10px',
           }}
 
         >
@@ -269,15 +276,17 @@ export default function Departments() {
     
                 }}
                 type="primary" size="large" ><PlusCircleOutlined/> Thêm Phòng Ban</Button>
-                <Divider type="horizontal" style={{color: '#dddddd'}}/>
         </Header>
         
        
             <Content
               style={{
-                margin: '30px 16px 50px',
+                margin: '20px 16px 50px',
                 overflow: 'initial',
                 background: colorBgContainer,
+                border: '1px solid',
+                borderColor: '#dddddd',
+                borderRadius: '10px',
               }}
             >
               <div
@@ -288,9 +297,12 @@ export default function Departments() {
                   display:'inline',
                 }}
               >
-              
-    
     <Table
+    style={{
+      border: '1px solid',
+      borderColor: '#dddddd',
+      borderRadius: '10px',
+              }}
      columns={columns} dataSource={data} scroll={{x:'max-content'}}/>
 
               </div>
