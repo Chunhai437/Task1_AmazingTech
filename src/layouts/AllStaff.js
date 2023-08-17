@@ -44,14 +44,14 @@ const columns = [
     }
   },
   {
-    title: <span style={{color: 'grey'}}><b>ID</b></span>,
+    title: <span ><b>ID</b></span>,
     dataIndex: 'key',
     key: 'key',
     render: (text) => <span style={{ color: 'gray' }}>{text}</span>,
   },
   
   {
-    title: [<AlignLeftOutlined style={{color: 'grey'}} />, <span style={{color: 'grey'}}><b>  Tên Nhân Viên</b></span>],
+    title: [<AlignLeftOutlined  />, <span ><b>  Tên Nhân Viên</b></span>],
     dataIndex: 'name',
     key: 'name',
     overflow:'auto',
@@ -82,7 +82,7 @@ const randomColor = colors[Math.floor(Math.random() * colors.length)];
     },
   },
   {
-    title: [<UnorderedListOutlined style={{color: 'grey'}}/>, <span style={{color: 'grey'}}><b>  Tên Phòng Ban</b></span>],
+    title: [<UnorderedListOutlined />, <span ><b>  Tên Phòng Ban</b></span>],
     dataIndex: 'room',
     key: 'room',
     render: (text) => {
@@ -128,13 +128,13 @@ const randomColor = colors[Math.floor(Math.random() * colors.length)];
     },
   },
   {
-    title: [<PhoneOutlined style={{color: 'grey'}}/>,<span style={{color: 'grey'}}><b>  Số Điện Thoại</b></span>],
+    title: [<PhoneOutlined />,<span ><b>  Số Điện Thoại</b></span>],
     dataIndex: 'phone',
     key: 'phone',
     render: (text) => <span style={{ color: 'gray' }}>{text}</span>,
   },
   {
-    title: [<UnorderedListOutlined style={{color: 'grey'}}/>, <span style={{color: 'grey'}}><b>  Giới tính</b></span>],
+    title: [<UnorderedListOutlined />, <span ><b>  Giới tính</b></span>],
     key: 'sex',
     dataIndex: 'sex',
     render: (text) => {
@@ -149,37 +149,37 @@ const randomColor = colors[Math.floor(Math.random() * colors.length)];
     }
   },
   {
-    title: [<GoogleOutlined style={{color: 'grey'}}/>, <span style={{color: 'grey'}}><b>  Email</b></span>],
+    title: [<GoogleOutlined />, <span ><b>  Email</b></span>],
     dataIndex: 'email',
     key: 'email',
     render: (text) => <span style={{ color: 'gray' }}>{text}</span>,
   },
   {
-    title:  [<BankOutlined style={{color: 'grey'}}/> , <span style={{color: 'grey'}}><b>  Ngân Hàng</b></span>],
+    title:  [<BankOutlined/> , <span><b>  Ngân Hàng</b></span>],
     dataIndex: 'bank',
     key: 'bank',
     render: (text) => <span style={{ color: 'gray' }}>{text}</span>,
   },
   {
-    title: [<CalendarOutlined style={{color: 'grey'}} />, <span style={{color: 'grey'}}><b>  Ngày Sinh</b></span>],
+    title: [<CalendarOutlined />, <span ><b>  Ngày Sinh</b></span>],
     dataIndex: 'birthday',
     key: 'birthday',
     render: (text) => <span style={{ color: 'gray' }}>{text}</span>,
   },
   {
-    title: [<HomeOutlined style={{color: 'grey'}} /> , <span style={{color: 'grey'}}><b>  Địa Chỉ</b></span>],
+    title: [<HomeOutlined  /> , <span ><b>  Địa Chỉ</b></span>],
     dataIndex: 'address',
     key: 'address',
     render: (text) => <span style={{ color: 'gray' }}>{text}</span>,
   },
   {
-    title: [<GlobalOutlined style={{color: 'grey'}}/>, <span style={{color: 'grey'}}><b>  Quốc Gia</b></span>],
+    title: [<GlobalOutlined />, <span ><b>  Quốc Gia</b></span>],
     dataIndex: 'nation',
     key: 'nation',
     render: (text) => <span style={{ color: 'gray' }}>{text}</span>,
   },
   {
-    title: [<CreditCardOutlined style={{color: 'grey'}}/>, <span style={{color: 'grey'}}><b>  TK Ngân Hàng</b></span>],
+    title: [<CreditCardOutlined />, <span ><b>  TK Ngân Hàng</b></span>],
     dataIndex: 'account',
     key: 'account',
     render: (text) => <span style={{ color: 'grey' }}>{text}</span>,

@@ -21,6 +21,9 @@ import Index from './layouts/Index';
 import { Link } from 'react-router-dom';
 import Departments from './layouts/Departments';
 import AllStaff from './layouts/AllStaff';
+import MyContract from './layouts/MyContract';
+import Contracts from './layouts/Contracts';
+import AddStaff from './layouts/AddStaff';
 // import Header from './components/Header';
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 const url = 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg';
@@ -37,45 +40,45 @@ const { Content, Footer, Sider } = Layout;
 const items = [
   getItem(
     <Link to="/dashboard" ><span style={{fontWeight: '600'}}>DASHBOARD</span></Link>,
-    'Dashboard',
+    '1',
     <HomeOutlined />
   ),
 
   getItem(<span style={{fontWeight: '600'}}>NHÂN VIÊN</span>, 'sub1', <TeamOutlined />, [
     getItem(<Link to="/departments" >Phòng Ban</Link>
-    ,'1', 
+    ,'2', 
     <TeamOutlined />),
-    getItem('Phòng Ban Của Tôi', '2', <TeamOutlined />),
+    getItem('Phòng Ban Của Tôi', '3', <TeamOutlined />),
     getItem(<Link to="/allstaff" >Toàn Bộ Nhân Viên</Link>,
-      '3',
+      '4',
       <TeamOutlined />),
-    getItem('Tạo Nhân Viên Mới', '4', <UserAddOutlined />),
+    getItem(<Link to="/addstaff">Tạo Nhân Viên Mới</Link>, '5', <UserAddOutlined />),
   ]),
   getItem(<span style={{fontWeight: '600'}}>TĂNG CA</span>, 'sub2', <FieldTimeOutlined />, [
-    getItem('Đơn Tăng Ca Nhân Viên', '5', <SolutionOutlined />),
-    getItem('Đơn Tăng Ca Của Tôi', '6', <SolutionOutlined />),
+    getItem('Đơn Tăng Ca Nhân Viên', '6', <SolutionOutlined />),
+    getItem('Đơn Tăng Ca Của Tôi', '7', <SolutionOutlined />),
   ]),
   getItem(<span style={{fontWeight: '600'}}>NGHỈ PHÉP</span>, 'sub3', <FieldTimeOutlined />, [
-    getItem('Đơn Nghỉ Phép Của Nhân Viên', '7', <SolutionOutlined />),
-    getItem('Đơn Nghỉ Phép Của Tôi', '8', <SolutionOutlined />),
+    getItem('Đơn Nghỉ Phép Của Nhân Viên', '8', <SolutionOutlined />),
+    getItem('Đơn Nghỉ Phép Của Tôi', '9', <SolutionOutlined />),
   ]),
   getItem(<span style={{fontWeight: '600'}}>ĐƠN KHÁC</span>, 'sub4', <FileOutlined />, [
-    getItem('Danh Sách Đơn Khác', '9', <FileOutlined />),
-    getItem('Đơn Khác Của Tôi', '10', <FileOutlined />),
+    getItem('Danh Sách Đơn Khác', '10', <FileOutlined />),
+    getItem('Đơn Khác Của Tôi', '11', <FileOutlined />),
   ]),
 
   getItem(<span style={{fontWeight: '600'}}>QUẢN LÝ LƯƠNG</span>, 'sub5', <BarChartOutlined />, [
-    getItem('Lương Nhân Viên', '11', <DollarOutlined />),
-    getItem('Lương Của Tôi', '12', <DollarOutlined />),
+    getItem('Lương Nhân Viên', '12', <DollarOutlined />),
+    getItem('Lương Của Tôi', '13', <DollarOutlined />),
   ]),
 
   getItem(<span style={{fontWeight: '600'}}>HỢP ĐỒNG</span>, 'sub6', <SnippetsOutlined />, [
-    getItem('Hợp Đồng Nhân Viên', '13', <FileDoneOutlined />),
-    getItem('Hợp Đồng Của Tôi', '14', <FileDoneOutlined />),
+    getItem(<Link to="/contracts">Hợp Đồng Nhân Viên</Link>, '14', <FileDoneOutlined />),
+    getItem(<Link to="/mycontract">Hợp Đồng Của Tôi</Link>, '15', <FileDoneOutlined />),
   ]),
 
   getItem(<span style={{fontWeight: '600'}}>TUYỂN DỤNG</span>, 'sub7', <UsergroupAddOutlined />, [
-    getItem('Danh Sách Ứng Viên', '15', <UsergroupAddOutlined />),
+    getItem('Danh Sách Ứng Viên', '16', <UsergroupAddOutlined />),
 
   ]),
 ]
@@ -93,7 +96,7 @@ const App = () => {
   };
   const [selectedKeys, setSelectedKeys] = useState([]);
   useEffect(() => {
-    const selectedMenu = localStorage.getItem('selectedMenu');
+    const selectedMenu = sessionStorage.getItem('selectedMenu');
     if (selectedMenu) {
     setSelectedKeys([selectedMenu]);
     }
@@ -101,7 +104,7 @@ const App = () => {
     );
     const handleMenuSelect = (item) => {
       setSelectedKeys([item.key]);
-      localStorage.setItem('selectedMenu', item.key);
+      sessionStorage.setItem('selectedMenu', item.key);
       };
   return (
     <Layout hasSider>
@@ -122,7 +125,7 @@ const App = () => {
         <div className="demo-logo-vertical" />
         <Space size={16} wrap>
         <Avatar src={<img src={url} alt="avatar" />} />
-        <h3>NGUYEN VAN QUAN LY</h3>
+        <h3 style={{fontWeight: '650'}}>NGUYEN VAN QUAN LY</h3>
     </Space>
 
         <br />
@@ -140,7 +143,7 @@ const App = () => {
         <br/>
         <Menu
           style={{
-            width: '260',
+            width: '270px',
           }}
           theme={theme1} mode={mode} 
           selectedKeys={selectedKeys}
@@ -180,6 +183,9 @@ const App = () => {
               <Route path='/dashboard' element={<Dashboard />} />
               <Route path='/departments' element={<Departments />} />
               <Route path='/allstaff' element={<AllStaff/>} />
+              <Route path='/mycontract' element={<MyContract/>} />
+              <Route path='/contracts' element={<Contracts/>} />
+              <Route path='/addstaff' element={<AddStaff/>} />
             </Routes>
           </div>
 

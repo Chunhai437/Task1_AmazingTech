@@ -17,17 +17,22 @@ const columns = [
   {
     dataIndex: 'symbol',
     key: 'symbol',
+    width: '5%',
   },
   {
-    title: <span style={{color: 'grey'}}>ID</span>,
+    title: <span ><b>ID</b></span>,
     dataIndex: 'key',
     key: 'key',
+    width: '5%',
+    overflow: 'auto',
     render: (text) => <span style={{ color: 'grey' }}>{text}</span>,
   },
   {
-    title: [<UserOutlined style={{color: 'grey'}} />, <span style={{color: 'grey'}}><b>  Tên Phòng Ban</b></span>],
+    title: [<UserOutlined />, <span ><b>  Tên Phòng Ban</b></span>],
     dataIndex: 'room',
     key: 'room',
+    width: '15%',
+    overflow: 'auto',
     render: (text) => {
       let color = 'cyan'; // Mặc định màu là 'cyan'
   
@@ -71,14 +76,16 @@ const columns = [
     },
   },
   {
-    title: [<UserOutlined style={{color: 'grey'}}/>, <span style={{color: 'grey'}}><b>  Quản Lý  </b></span>, <ArrowUpOutlined style={{color: 'grey'}} />],
+    title: [<UserOutlined />, <span><b>  Quản Lý  </b></span>, <ArrowUpOutlined  />],
     dataIndex: 'name',
     key: 'name',
+    width: '13%',
+    overflow: 'auto',
     render: (text) => {
       let letter = text.charAt(0);
       if (text !== '') {
         return (
-          <>
+          <span>
             <Avatar
               style={{
                 backgroundColor: '#800080',
@@ -87,28 +94,34 @@ const columns = [
             >
               {letter}
             </Avatar>
-             <span style={{color: 'grey'}}>   {text}</span>
-          </>
+             <span style={{color: 'grey'}}>        <b>{text}</b></span>
+          </span>
         );
       }
     },
   },
   {
-    title: [<NumberOutlined style={{color: 'grey'}} />,<span style={{color: 'grey'}}><b>  Số Nhân Viên</b></span>],
+    title: [<NumberOutlined />,<span ><b>  Số Nhân Viên</b></span>],
     dataIndex: 'number',
     key: 'number',
+    width: '10%',
+    overflow: 'auto',
     render: (text) => <span style={{ color: 'grey' }}>{text}</span>,
   },
   {
-    title: [<AlignLeftOutlined style={{color: 'grey'}} />,<span style={{color: 'grey'}}><b>  Email Quản Lý</b></span>],
+    title: [<AlignLeftOutlined />,<span ><b>  Email Quản Lý</b></span>],
     dataIndex: 'email',
     key: 'email',
+    width: '10%',
+    overflow: 'auto',
     render: (text) => <span style={{ color: 'grey' }}>{text}</span>,
   },
   {
-    title: [<PhoneOutlined style={{color: 'grey'}}/>,<span style={{color: 'grey'}}><b>  Số Điện Thoại</b></span>],
+    title: [<PhoneOutlined />,<span ><b>  Số Điện Thoại</b></span>],
     dataIndex: 'phone',
     key: 'phone',
+    width: '14%',
+    overflow: 'auto',
     render: (text) => <span style={{ color: 'grey' }}>{text}</span>,
   },
 ];
@@ -117,7 +130,7 @@ const data = [
     key: '1',
     symbol: <EllipsisOutlined />,
     room: 'Sales',
-    name: 'Nguyen Van Quan Ly',
+    name: 'Nguyen Van Quan Ly ',
     number: 3,
     email: 'hrstaff@test.com',
     phone: '0936748956'
@@ -295,6 +308,7 @@ export default function Departments() {
                   textAlign: 'center',
                   background: colorBgContainer,
                   display:'inline',
+                  width: '100%'
                 }}
               >
     <Table
@@ -302,6 +316,7 @@ export default function Departments() {
       border: '1px solid',
       borderColor: '#dddddd',
       borderRadius: '10px',
+      width: '100%'
               }}
      columns={columns} dataSource={data} scroll={{x:'max-content'}}/>
 
